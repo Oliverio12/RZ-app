@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RZ-app</string>
+    <string name="default_web_client_id" translatable="false">212888583535-232udlc2a0ips7uq7v7e5mbpjro6dd7v.apps.googleusercontent.com</string>
 </resources>

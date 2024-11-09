@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "212888583535",
+    "project_id": "rz-app-d3655",
+    "storage_bucket": "rz-app-d3655.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212888583535:android:e2387912ef25e499dc7c9a",
+        "android_client_info": {
+          "package_name": "com.android.rz_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "212888583535-232udlc2a0ips7uq7v7e5mbpjro6dd7v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.rz_app",
+            "certificate_hash": "a7150ff39102645ee6649326f64b30c52998285f"
+          }
+        },
+        {
+          "client_id": "212888583535-6nhtla1r1oukc42evg9q7s4d0he3mdsu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWSwSBSf_0YLHr_iotZrfzlM3wRyUQqDc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "212888583535-6nhtla1r1oukc42evg9q7s4d0he3mdsu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
