@@ -16,6 +16,12 @@
         android:theme="@style/Theme.RZapp"
         tools:targetApi="31">
         <activity
+            android:name=".UI.AcercaDeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UI.PoliticasDeActivity"
+            android:exported="false" />
+        <activity
             android:name=".UI.DetailBudget"
             android:exported="false" />
         <activity

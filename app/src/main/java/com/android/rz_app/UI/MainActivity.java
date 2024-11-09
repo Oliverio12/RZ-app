@@ -28,16 +28,16 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
-
     // Variables para gestionar FirebaseAuth y Google SignIn
     private FirebaseAuth mAuth;
     private GoogleSignInClient mGoogleSignInClient;
     private GoogleSignInOptions gso;
-
     Button btnCerraSesion, btnEliminarCuenta;
+    Button btnAcercaDe ;
+    Button btnMainActivity2;
+    Button btnPoliticasDe;
     private TextView userNombre, userEmail, userID;
     private CircleImageView userImg;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,11 +48,12 @@ public class MainActivity extends AppCompatActivity {
         userImg = findViewById(R.id.userImagen);
         btnCerraSesion = findViewById(R.id.btnLogout);
         btnEliminarCuenta = findViewById(R.id.btnEliminarCta);
-
+        btnAcercaDe = findViewById(R.id.btnAcerca);
+        btnMainActivity2 = findViewById(R.id.btnApps);
+        btnPoliticasDe = findViewById(R.id.btnPoliticas);
         // Inicializar Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-
         if (currentUser != null) {
             // Mostrar datos del usuario
             userID.setText(currentUser.getUid());
@@ -60,14 +61,33 @@ public class MainActivity extends AppCompatActivity {
             userEmail.setText(currentUser.getEmail());
             Glide.with(this).load(currentUser.getPhotoUrl()).into(userImg);
         }
-
+        btnAcercaDe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AcercaDeActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnMainActivity2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+                startActivity(intent);
+            }
+        });
+        btnPoliticasDe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PoliticasDeActivity.class);
+                startActivity(intent);
+            }
+        });
         // Configurar opciones de Google SignIn
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
         // Configurar botón de cerrar sesión
         btnCerraSesion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,19 +95,15 @@ public class MainActivity extends AppCompatActivity {
                 signOut();
             }
         });
-
         // Configurar botón de eliminar cuenta
         btnEliminarCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-
                 if (user != null) {
                     GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(getApplicationContext());
-
                     if (signInAccount != null) {
                         AuthCredential credential = GoogleAuthProvider.getCredential(signInAccount.getIdToken(), null);
-
                         if (credential != null) {
                             user.reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -96,7 +112,8 @@ public class MainActivity extends AppCompatActivity {
                                         deleteUser(user);
                                     } else {
                                         Log.e("MainActivity", "Error al re-autenticar al usuario.", task.getException());
-                                        Toast.makeText(getApplicationContext(), "Re-autenticación fallida. Intenta cerrar sesión e iniciar de nuevo.", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(getApplicationContext(), "Re-autenticación fallida. Intenta cerrar sesión e iniciar de nuevo.",
+                                                Toast.LENGTH_LONG).show();
                                     }
                                 }
                             });
@@ -114,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     // Método para eliminar usuario
     private void deleteUser(final FirebaseUser user) {
         user.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -130,7 +146,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     // Método para cerrar sesión
     private void signOut() {
         mAuth.signOut();
