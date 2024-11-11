@@ -3,54 +3,63 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondoazullll"
+    android:background="@color/blue_400"
     android:orientation="vertical"
     tools:context=".UI.AddBudget">
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25sp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="sans-serif-black"
         android:gravity="center"
-        android:text="CREAR PRESUPUESTO"
+        android:text="Crear Presupuesto"
         android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
     <EditText
         android:id="@+id/edtATitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30sp"
-        android:layout_marginTop="20sp"
-        android:layout_marginRight="30sp"
-        android:ems="10"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:drawablePadding="10dp"
         android:hint="Título del presupuesto"
         android:inputType="text"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:padding="16dp"
+        android:background="@drawable/rounded_edittext"
+        android:textColor="@color/gray_800"
+        android:textColorHint="@color/gray_500" />
+
     <EditText
         android:id="@+id/edtAMonto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30sp"
-        android:layout_marginTop="20sp"
-        android:layout_marginRight="30sp"
-        android:ems="10"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:drawablePadding="10dp"
         android:hint="Monto presupuesto"
         android:inputType="numberDecimal"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:padding="16dp"
+        android:background="@drawable/rounded_edittext"
+        android:textColor="@color/gray_800"
+        android:textColorHint="@color/gray_500" />
+
     <Button
         android:id="@+id/btnGuardarPresupuesto"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30sp"
-        android:layout_marginBottom="20sp"
-        android:backgroundTint="@android:color/transparent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/yellow_700"
         android:outlineProvider="none"
         android:text="Guardar"
         android:textColor="@color/white"
-        android:textColorHighlight="#673AB7"
-        android:textColorHint="#673AB7"
-        android:textColorLink="@color/black"
-        android:textSize="25sp" />
+        android:textSize="20dp" />
 </LinearLayout>
+

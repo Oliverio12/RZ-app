@@ -3,9 +3,11 @@ package com.android.rz_app.UI;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +32,8 @@ public class registerActivity extends AppCompatActivity {
     EditText txtInputUsername, txtInputEmail, txtInputPassword, txtInputConfirmPassword;
     private ProgressDialog mProgressBar;
     private FirebaseAuth mAuth;
+    private EditText inputPassword, inputConfirmPassword;
+    private ImageView PasswordVisibility, ConfirmPasswordVisibility;
 
 
     @Override
@@ -40,9 +44,35 @@ public class registerActivity extends AppCompatActivity {
         txtInputEmail = findViewById(R.id.inputEmail);
         txtInputPassword = findViewById(R.id.inputPassword);
         txtInputConfirmPassword = findViewById(R.id.inputConfirmPassword);
+        PasswordVisibility = findViewById(R.id.tPassVisibility);
+        ConfirmPasswordVisibility = findViewById(R.id.tPassConfirmVisibility);
 
         btnRegistrar = findViewById(R.id.btnRegister);
         tieneCuenta =findViewById(R.id.alreadyHaveAccount);
+
+        //PARA VER CONTRA
+        PasswordVisibility.setOnClickListener(v -> {
+            if (txtInputPassword.getInputType() == (InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)) {
+                txtInputPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                PasswordVisibility.setImageResource(R.drawable.open); // Icono de "ver"
+            } else {
+                txtInputPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                PasswordVisibility.setImageResource(R.drawable.close); // Icono de "ocultar"
+            }
+            txtInputPassword.setSelection(txtInputPassword.length()); // Mantener el cursor al final
+        });
+
+        // Toggle visibility for Confirm Password field
+        ConfirmPasswordVisibility.setOnClickListener(v -> {
+            if (txtInputConfirmPassword.getInputType() == (InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)) {
+                txtInputConfirmPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                ConfirmPasswordVisibility.setImageResource(R.drawable.open); // Icono de "ver"
+            } else {
+                txtInputConfirmPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                ConfirmPasswordVisibility.setImageResource(R.drawable.close); // Icono de "ocultar"
+            }
+            txtInputConfirmPassword.setSelection(txtInputConfirmPassword.length()); // Mantener el cursor al final
+        });
 
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +91,8 @@ public class registerActivity extends AppCompatActivity {
         mProgressBar = new ProgressDialog(registerActivity.this);
 
     }
+
+
 
     public void verificarCredenciales(){
         String username = txtInputUsername.getText().toString();

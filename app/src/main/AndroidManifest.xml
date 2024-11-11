@@ -33,21 +33,17 @@
         <activity
             android:name=".UI.registerActivity"
             android:exported="false" />
+
         <activity
             android:name=".UI.loginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UI.LoginActivity"
-            android:exported="false">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".UI.RegisterActivity"
-            android:exported="false" />
+
         <activity
             android:name=".UI.MainActivity"
             android:exported="false" />

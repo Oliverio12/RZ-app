@@ -8,10 +8,12 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,9 +59,22 @@ public class loginActivity extends AppCompatActivity {
         txtInputEmail = findViewById(R.id.inputEmail);
         txtInputPassword = findViewById(R.id.inputPassword);
         btnLogin = findViewById(R.id.btnlogin);
-        lblCrearCuenta = findViewById(R.id.txtNoTieneCuenta);
+        lblCrearCuenta = findViewById(R.id.txtRegistrese);
         btnGoogle = findViewById(R.id.btnGoogle);
+        ImageView passvisibility = findViewById(R.id.tPassVisibility);
 
+
+
+        passvisibility.setOnClickListener(v -> {
+            if (txtInputPassword.getInputType() == (InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)) {
+                txtInputPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                passvisibility.setImageResource(R.drawable.open); // Cambia al icono de "ver"
+            } else {
+                txtInputPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                passvisibility.setImageResource(R.drawable.close); // Cambia al icono de "ocultar"
+            }
+            txtInputPassword.setSelection(txtInputPassword.length()); // Mantener el cursor al final del texto
+        });
 
         lblCrearCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
